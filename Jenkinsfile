@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        AWS_ACCESS_KEY_ID = 'AKIAVIZ2545N6PTP2VBV'  
-        AWS_SECRET_ACCESS_KEY = 'bSIlaT/XTvDOQ6Lp5vwlcRzLt0RmR7bbcb8q8J6a' 
+        AWS_ACCESS_KEY_ID = "AKIAVIZ2545N6PTP2VBV"  // Replace with your credentials ID
+        AWS_SECRET_ACCESS_KEY = "bSIlaT/XTvDOQ6Lp5vwlcRzLt0RmR7bbcb8q8J6a"  // Replace with your credentials ID
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/reddyaravind/Jenkins.git'  
+                git 'https://github.com/reddyaravind/Jenkins.git'  // Ensure this URL is correct
             }
         }
 
