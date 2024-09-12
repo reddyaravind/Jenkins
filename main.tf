@@ -1,12 +1,14 @@
 # Define the AWS provider
 provider "aws" {
-  region = "us-east-1"
+  region = "us-west-2"  # Change this to your desired AWS region
 }
 
-# Data source to fetch all IAM users
-data "aws_iam_users" "all_users" {}
+# Define an S3 bucket
+resource "aws_s3_bucket" "example_bucket" {
+  bucket_prefix = "my-terraform-bucket-"  # Bucket name prefix
+}
 
-# Output the list of IAM user names
-output "iam_user_names" {
-  value = data.aws_iam_users.all_users.users[*].name
+# Output the name of the created bucket
+output "bucket_name" {
+  value = aws_s3_bucket.example_bucket.bucket
 }
