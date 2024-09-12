@@ -1,6 +1,6 @@
 # Define the AWS provider
 provider "aws" {
-  region = "us-west-2"  # Change this to your desired AWS region
+  region = "us-east-1"  # Change this to your desired AWS region
 }
 
 # Data source to fetch AWS account details
