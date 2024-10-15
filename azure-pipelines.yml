@@ -1,58 +1,17 @@
 trigger:
   branches:
     include:
-      - main
+      - main # Change this to the branch you want to trigger on
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-# Step 1: Install Terraform
-- task: TerraformInstaller@0
-  inputs:
-    terraformVersion: '1.5.6' # You can specify your Terraform version here.
-  displayName: 'Install Terraform'
-  
-# Echo message for Terraform installation
-- script: |
-    echo "Terraform installation completed."
-  displayName: 'Echo Terraform Installation'
-
-# Step 2: Checkout the code from your repository
+# Step 1: Checkout the code from your GitHub repository
 - checkout: self
-  displayName: 'Checkout Code'
-  
+  displayName: 'Checkout Code from GitHub'
+
 # Echo message for code checkout
 - script: |
-    echo "Code checkout completed."
+    echo "Code checkout completed successfully."
   displayName: 'Echo Code Checkout'
-
-# Step 3: Initialize Terraform
-- script: |
-    terraform init
-  displayName: 'Terraform Init'
-
-# Echo message for Terraform initialization
-- script: |
-    echo "Terraform initialization completed."
-  displayName: 'Echo Terraform Init'
-
-# Step 4: Plan Terraform (Optional: Preview changes)
-- script: |
-    terraform plan
-  displayName: 'Terraform Plan'
-
-# Echo message for Terraform plan
-- script: |
-    echo "Terraform plan completed."
-  displayName: 'Echo Terraform Plan'
-
-# Step 5: Apply Terraform (Apply the changes)
-- script: |
-    terraform apply -auto-approve
-  displayName: 'Terraform Apply'
-
-# Echo message for Terraform apply
-- script: |
-    echo "Terraform apply completed."
-  displayName: 'Echo Terraform Apply'
