@@ -1,12 +1,20 @@
-# Define the AWS provider
-provider "aws" {
-  region = "us-east-1"  # Change this to your desired AWS region
+provider "azurerm" {
+  features {}
 }
 
-# Data source to fetch AWS account details
-data "aws_caller_identity" "current" {}
+resource "azurerm_resource_group" "example" {
+  name     = "example-resource-group"
+  location = "East US" # You can change this to your preferred region
+}
 
-# Output the AWS account ID
-output "account_id" {
-  value = data.aws_caller_identity.current.account_id
+resource "azurerm_storage_account" "example" {
+  name                     = "examplestorageacct" # Must be globally unique
+  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.example.location
+  account_tier            = "Standard"
+  account_replication_type = "LRS" # Locally Redundant Storage
+
+  tags = {
+    environment = "dev"
+  }
 }
